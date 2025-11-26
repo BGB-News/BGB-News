@@ -83,14 +83,17 @@
             font-family: Verdana, Arial;
         }
         
-        /* Navigation */
+        /* Navigation - ITENS PERFEITAMENTE ALINHADOS */
         .main-nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .main-nav li {
-            margin-left: 20px;
+            margin: 0 8px;
             position: relative;
         }
         
@@ -103,6 +106,12 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            text-align: center;
+            height: 40px;
         }
         
         .main-nav a::before {
@@ -506,6 +515,11 @@
             .hero-subtitle {
                 font-size: 1.8rem;
             }
+            
+            .main-nav a {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -535,6 +549,14 @@
             
             .main-nav li {
                 margin: 8px 0;
+                width: 100%;
+            }
+            
+            .main-nav a {
+                justify-content: center;
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px;
             }
             
             .mobile-menu-btn {
@@ -600,14 +622,14 @@
             </button>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#" class="active">Início</a></li>
-                    <li><a href="#">Youth and Sustainability</a></li>
-                    <li><a href="#">La juventud según nuestra mirada</a></li>
-                    <li><a href="#">Health</a></li>
-                    <li><a href="#">Social Issues</a></li>
-                    <li><a href="#">Culture and Entertainment</a></li>
-                    <li><a href="#">Editoriais</a></li>
-                    <li><a href="#">Entrevistas</a></li>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="youth-and-sustainability.html">Youth and Sustainability</a></li>
+                    <li><a href="la-juventud-según-nuestra-mirada.html">La juventud según nuestra mirada</a></li>
+                    <li><a href="health.html">Health</a></li>
+                    <li><a href="social-issues.html">Social Issues</a></li>
+                    <li><a href="culture-and-entertainment.html">Culture and Entertainment</a></li>
+                    <li><a href="editoriais.html">Editoriais</a></li>
+                    <li><a href="entrevistas.html">Entrevistas</a></li>
                 </ul>
             </nav>
         </div>
@@ -635,7 +657,7 @@
                 <div class="card-content">
                     <h3 class="card-title">What is gender inequality? Why does it exist?</h3>
                     <p class="card-excerpt">Gender inequality happens when a gender has more privileges than the other, it is the stereotyping of what is feminine and what is masculine, that occurs normally with women. [...]</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
@@ -644,7 +666,7 @@
                 <div class="card-content">
                     <h3 class="card-title">La juventud según nuestra mirada</h3>
                     <p class="card-excerpt">Una perspectiva única sobre la juventud desde nuestra visión particular.</p>
-                    <a href="#" class="read-more">Lea más <i class="fas fa-arrow-right"></i></a>
+                    <a href="la-juventud-según-nuestra-mirada.html" class="read-more">Lea más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
@@ -653,7 +675,7 @@
                 <div class="card-content">
                     <h3 class="card-title">Is Maus worth it or not?</h3>
                     <p class="card-excerpt">Have you ever experienced a traumatic event like the Holocaust? Well, Vladek has. In the book Maus, written by his son Art Spiegelman, we follow the story of Vladek during the Holocaust. [...]</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <a href="culture-and-entertainment.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -666,7 +688,7 @@
                 <div class="card-content">
                     <h3 class="card-title">Voices of resilience</h3>
                     <p class="card-excerpt">Brazil's black youth face systematic challenges rooted in centuries of racial inequality. Despite comprising over half of the nation's population, they encounter disparities in education, employment, and social mobility, perpetuating cycles of poverty and marginalization. [...]</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
@@ -674,7 +696,7 @@
                 <div class="card-content">
                     <h3 class="card-title">Extreme use of testosterone: Is it safe or not?</h3>
                     <p class="card-excerpt">Big muscles and perfect shape in a short time. The question is: are they really natural? Well, this trend is very popular among adults, but mostly among teenagers who seek stronger muscles by injecting testosterone. [...]</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <a href="health.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
@@ -682,7 +704,7 @@
                 <div class="card-content">
                     <h3 class="card-title">Novas oportunidades são criadas a partir de projetos direcionados à juventude</h3>
                     <p class="card-excerpt">Nos últimos anos, têm sido criados vários projetos para crianças e adolescentes. Eles têm ajudado muito os jovens que participam deles, por meio de atividades novas, como cozinhar, pintar, limpar, além de aulas de robótica e informática. [...]</p>
-                    <a href="#" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="youth-and-sustainability.html" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -784,32 +806,6 @@
                     this.style.transform = 'translateY(0)';
                 });
             });
-            
-            // Add active class to nav links based on scroll position
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
-            
-            function setActiveNavLink() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (window.scrollY >= (sectionTop - 150)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', setActiveNavLink);
             
             // Initialize animations
             animateOnScroll();
