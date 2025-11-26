@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth and Sustainability - BGB News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007888;
+            --secondary-color: #c0da98;
+            --accent-color: #37767f;
+            --dark-color: #333;
+            --light-color: #f8f8f8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PT Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .site-header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+        
+        .site-header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .site-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: Verdana, Arial;
+        }
+        
+        /* Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-nav li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover::before,
+        .main-nav a.active::before {
+            width: 100%;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .page-hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease;
+            z-index: 1;
+        }
+        
+        .page-hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: Verdana, Arial;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-family: Verdana, Arial;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        /* Article Styles */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .article-content h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .author-info {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .author-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--light-color);
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .main-nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            .main-nav.active {
+                display: block;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .main-nav li {
+                margin: 8px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .page-hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-hero-title {
+                font-size: 2rem;
+            }
+            
+            .page-hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkca6e9jaQ1hP5Nmnfl_BScElChhegffXjvBJls7WCT5MX3WHZQPzQJM6PZP4lV9b3inMstcimGA_UWntZRX_0M3oHX98cfrhSYUr6YokMKtMfyiCSZnzjAW_A7s7ZmMWOinOkLl6Z5ts9Vr9vHbMjm5sdA5XshQLLwpHuur7bz8-V1sdR50GyrhXrM=w16383" alt="BGB News Logo">
+                </a>
+                <div class="site-title">BGB News</div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="youth-sustainability.html" class="active">Youth and Sustainability</a></li>
+                    <li><a href="juventud-mirada.html">La juventud según nuestra mirada</a></li>
+                    <li><a href="health.html">Health</a></li>
+                    <li><a href="social-issues.html">Social Issues</a></li>
+                    <li><a href="culture-entertainment.html">Culture and Entertainment</a></li>
+                    <li><a href="editoriais.html">Editoriais</a></li>
+                    <li><a href="entrevistas.html">Entrevistas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Youth and Sustainability</h1>
+            <p class="page-hero-subtitle">How young people are shaping a sustainable future</p>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <section class="section">
+        <h2 class="section-title">Youth Leading the Change</h2>
+        
+        <div class="article-content">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Youth sustainability" class="article-image">
+            
+            <p>In recent years, young people around the world have emerged as powerful advocates for environmental sustainability. From school strikes to international conferences, youth are demanding action on climate change and pushing for sustainable solutions.</p>
+            
+            <h3>The Power of Youth Activism</h3>
+            
+            <p>Young activists like Greta Thunberg have inspired millions to take action. Their message is clear: we cannot wait for older generations to solve the climate crisis. The youth of today will inherit the consequences of environmental decisions made now, giving them a unique stake in creating sustainable solutions.</p>
+            
+            <p>School climate strikes have become a global phenomenon, with students skipping classes to demand political action. These movements have successfully brought climate change to the forefront of public discourse and pressured governments to declare climate emergencies.</p>
+            
+            <h3>Sustainable Initiatives Led by Youth</h3>
+            
+            <p>Beyond protests, young people are creating tangible solutions. Youth-led organizations are planting trees, cleaning beaches, developing recycling programs, and creating educational campaigns about sustainability.</p>
+            
+            <p>Many young entrepreneurs are launching sustainable businesses focused on eco-friendly products, renewable energy, and circular economy models. These ventures not only address environmental issues but also create green jobs for the future.</p>
+            
+            <h3>Education and Awareness</h3>
+            
+            <p>Young people are using social media and digital platforms to spread awareness about environmental issues. Through creative content, they're making sustainability accessible and engaging for their peers.</p>
+            
+            <p>Environmental education in schools is also evolving, with students demanding more comprehensive climate education and sustainable practices in their institutions.</p>
+            
+            <div class="author-info">
+                <p class="author-name">By: Student Writers of BGB News</p>
+                <p>This article is part of our series on youth perspectives on global issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jornal produzido por:</h3>
+                <p>Alice Reis, Bruno Silva, Bruno Zequi, Davi Guedes, Helena Calderaro, João Victor Pereira, Leonardo Dias, Livia Bertellotti, Lorena Chinchio, Luna Berger, Maria Clara Oliveira, Maria Eduarda Figueroa, Miguel Bavaresco, Pedro Calil, Rafaela Guarniero e Sophia da Silva.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Equipe pedagógica</h3>
+                <p><strong>Diretora Pedagógica</strong> - Ana Célia Mustafá</p>
+                <p><strong>Coordenadora Geral</strong> - Andressa Pescuma</p>
+                <p><strong>Coordenadora Pedagógica</strong> - Renata Leal</p>
+                <p><strong>Coordenadora Acadêmica</strong> - Litza Amorim</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Professores envolvidos no projeto</h3>
+                <p>Anderson Carlos (Natural Sciences), Artur Gonçalves (Classroom Assistant), Camila Ferraz (Language Arts), Fernando Ribeiro (Geography), Juliana Lima (History), Rodolfo Henrique Silva (Língua Portuguesa e Español) e Vanessa Ferreira (Arts).</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 BGB News - Jornal escolar da Builders</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Header hide/show on scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('.site-header');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+                
+                // Back to top button
+                const backToTop = document.querySelector('.back-to-top');
+                if (scrollTop > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Back to top functionality
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add active class to nav links based on current page
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
