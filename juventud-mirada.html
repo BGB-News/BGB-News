@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health - BGB News</title>
+    <title>La juventud según nuestra mirada - BGB News</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -83,14 +83,17 @@
             font-family: Verdana, Arial;
         }
         
-        /* Navigation */
+        /* Navigation - ITENS PERFEITAMENTE ALINHADOS */
         .main-nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .main-nav li {
-            margin-left: 20px;
+            margin: 0 8px;
             position: relative;
         }
         
@@ -103,6 +106,12 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            text-align: center;
+            height: 40px;
         }
         
         .main-nav a::before {
@@ -136,7 +145,7 @@
         
         /* Hero Section */
         .page-hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCkdRoJ6nxcHVIXPQzidKGXvbMQ92ebeirEiTFK9_LIuQeOzszTmFr0OXulBE3XjT6lbNIanaseXuzhXV-mv2k0HSUUj9WxySrRV64UbgArjXiBM7ZdWBdW5f2Zcs8WulXyBs3b1ePToxhE1t47vXPnvaZLqvqpaRHdHT5kUScYdAs6lqtPVGttRuvhQ=w16383');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -147,6 +156,16 @@
             position: relative;
             overflow: hidden;
             margin-top: 80px;
+        }
+        
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--white));
         }
         
         .page-hero-content {
@@ -219,41 +238,48 @@
             font-size: 1.5rem;
         }
         
-        .article-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin: 2rem 0;
-            box-shadow: var(--shadow);
-        }
-        
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-        
-        .warning-title {
-            font-weight: 700;
-            color: #856404;
-            margin-bottom: 0.5rem;
-        }
-        
-        .author-info {
-            background-color: var(--light-color);
-            padding: 2rem;
-            border-radius: 12px;
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin: 3rem 0;
-            border-left: 4px solid var(--primary-color);
         }
         
-        .author-name {
-            font-weight: 700;
+        .gallery-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--light-color);
+        }
+        
+        .gallery-author {
+            font-weight: 600;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-top: 10px;
         }
         
         /* Footer */
@@ -346,6 +372,48 @@
             transform: translateY(-5px);
         }
         
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(0, 120, 136, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -369,7 +437,40 @@
             }
         }
         
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 40px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 80px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-20px, 40px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-hero-title {
+                font-size: 3rem;
+            }
+            
+            .page-hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .main-nav a {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -397,6 +498,14 @@
             
             .main-nav li {
                 margin: 8px 0;
+                width: 100%;
+            }
+            
+            .main-nav a {
+                justify-content: center;
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px;
             }
             
             .mobile-menu-btn {
@@ -417,6 +526,10 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .gallery-image {
+                height: 250px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -431,10 +544,25 @@
             .section {
                 padding: 60px 15px;
             }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
     <!-- Header -->
     <header class="site-header">
         <div class="header-container">
@@ -450,11 +578,11 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Início</a></li>
-                    <li><a href="youth-sustainability.html">Youth and Sustainability</a></li>
-                    <li><a href="la-juventud-según-nuestra-mirada.html">La juventud según nuestra mirada</a></li>
-                    <li><a href="health.html" class="active">Health</a></li>
+                    <li><a href="youth-and-sustainability.html">Youth and Sustainability</a></li>
+                    <li><a href="la-juventud-según-nuestra-mirada.html" class="active">La juventud según nuestra mirada</a></li>
+                    <li><a href="health.html">Health</a></li>
                     <li><a href="social-issues.html">Social Issues</a></li>
-                    <li><a href="culture-entertainment.html">Culture and Entertainment</a></li>
+                    <li><a href="culture-and-entertainment.html">Culture and Entertainment</a></li>
                     <li><a href="editoriais.html">Editoriais</a></li>
                     <li><a href="entrevistas.html">Entrevistas</a></li>
                 </ul>
@@ -465,62 +593,86 @@
     <!-- Hero Section -->
     <section class="page-hero">
         <div class="page-hero-content">
-            <h1 class="page-hero-title">Health</h1>
-            <p class="page-hero-subtitle">Understanding wellness in the modern world</p>
+            <h1 class="page-hero-title">La juventud según nuestra mirada</h1>
+            <p class="page-hero-subtitle">Una perspectiva única sobre la juventud desde nuestra visión particular</p>
         </div>
     </section>
 
     <!-- Article Section -->
     <section class="section">
-        <h2 class="section-title">Extreme use of testosterone: Is it safe or not?</h2>
+        <h2 class="section-title">La juventud según nuestra mirada</h2>
         
         <div class="article-content">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Health and fitness" class="article-image">
+            <p>La juventud es una etapa de la vida llena de cambios, descubrimientos y desafíos. Es un período en el que comenzamos a formar nuestra identidad, a descubrir nuestras pasiones y a enfrentarnos a las responsabilidades del mundo adulto. Desde nuestra perspectiva como jóvenes, queremos compartir cómo vivimos esta etapa y qué significa para nosotros.</p>
             
-            <p>Big muscles and perfect shape in a short time. The question is: are they really natural? Well, this trend is very popular among adults, but mostly among teenagers who seek stronger muscles by injecting testosterone.</p>
+            <h3>Los desafíos de la juventud moderna</h3>
             
-            <h3>What is Testosterone?</h3>
+            <p>Vivimos en un mundo cada vez más conectado pero, paradójicamente, muchos jóvenes se sienten más solos que nunca. Las redes sociales nos permiten comunicarnos con personas de todo el mundo, pero también pueden generar presión por mantener una imagen perfecta y una vida aparentemente exitosa.</p>
             
-            <p>Testosterone is a hormone produced primarily in the testicles in men and ovaries in women, though in much smaller amounts. It plays a key role in the development of male reproductive tissues and promotes secondary sexual characteristics such as increased muscle and bone mass.</p>
+            <p>Además, enfrentamos la incertidumbre sobre nuestro futuro en un mundo que cambia rápidamente. La crisis climática, las transformaciones tecnológicas y las inestabilidades económicas nos plantean preguntas difíciles sobre qué camino seguir.</p>
             
-            <p>While testosterone is essential for normal development and health, using synthetic testosterone to enhance physical appearance or athletic performance carries significant risks.</p>
+            <h3>La importancia de la educación</h3>
             
-            <h3>The Dangers of Testosterone Abuse</h3>
+            <p>La educación juega un papel fundamental en nuestra formación como jóvenes. No solo nos proporciona conocimientos académicos, sino que también nos ayuda a desarrollar habilidades críticas, a entender diferentes perspectivas y a prepararnos para los desafíos del futuro.</p>
             
-            <p>When used improperly, testosterone can cause serious health problems:</p>
+            <p>Sin embargo, creemos que la educación debería adaptarse mejor a las realidades del mundo actual, incorporando más habilidades prácticas, educación emocional y oportunidades para explorar nuestras pasiones.</p>
             
-            <ul>
-                <li>Cardiovascular issues including heart attacks and strokes</li>
-                <li>Liver damage and tumors</li>
-                <li>Increased risk of blood clots</li>
-                <li>Mood swings, aggression, and other psychological effects</li>
-                <li>Infertility and testicular shrinkage</li>
-                <li>Acne and male-pattern baldness</li>
-            </ul>
+            <h3>Nuestras aspiraciones y sueños</h3>
             
-            <div class="warning-box">
-                <div class="warning-title">Health Warning</div>
-                <p>Using testosterone or other anabolic steroids without medical supervision is dangerous and illegal in many circumstances. The pursuit of rapid muscle growth can lead to lifelong health consequences.</p>
+            <p>A pesar de los obstáculos, los jóvenes mantenemos la esperanza y la ambición. Soñamos con un mundo más justo, sostenible e inclusivo. Aspiramos a carreras que nos apasionen, a relaciones significativas y a contribuir positivamente a nuestra sociedad.</p>
+            
+            <p>Valoramos la autenticidad, la diversidad y la libertad para ser quienes realmente somos. Queremos ser escuchados y tomar parte activa en la construcción de nuestro futuro.</p>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkf57fw5YiWtECcusbY2SMtt4YrlycTpJJhu1TFyGavwcWemr04oCVhNpQ-EPkWkhM_ZNMx8UdAAg46NZEF6LqZ-lNxw9X2XzoQO6S0KyAqR-JuwBSbV29_NuYQkY1K9U15ERPMtYHWYPBz36cWz9TGh38yIsm8r3tvhqChYLbwelwkqntnrSGuFetAZ4voDS3F8cMs7lYqwZVXmon8-a3xogs9FUcS_cK7ZewI=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Lorena Chinchio</p>
+                </div>
             </div>
             
-            <h3>Healthy Alternatives</h3>
-            
-            <p>Instead of turning to dangerous shortcuts, consider these healthy approaches to fitness:</p>
-            
-            <ul>
-                <li>Proper nutrition with adequate protein</li>
-                <li>Consistent, well-planned exercise routines</li>
-                <li>Sufficient rest and recovery</li>
-                <li>Patience - natural muscle growth takes time</li>
-                <li>Consultation with fitness professionals</li>
-            </ul>
-            
-            <p>Remember that true health isn't just about appearance - it's about overall wellbeing, including mental health, cardiovascular fitness, and sustainable habits.</p>
-            
-            <div class="author-info">
-                <p class="author-name">By: Student Writers of BGB News</p>
-                <p>This article is part of our health awareness series focusing on issues relevant to young people.</p>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkcCkbBh4RlRLRwAaKOBi3ExCTnFqZ0khfnmspr05FaEWh4YDJ7bU0js6zxe85M9eFt1BNqiOhUW9aoDsomOpeKzigUYe_YSn4dV4icpJuJR2SWmfaxuH36OvMrYyquYdPfSP9xie0I-9UDF6kJqQy2oG3R_CmihsHDt94T-n526os2JYRIfN6g1kc3uGEIDupVv3uF_uCZdpxpUGTqLbdodqJZGKUUI88fjfoQ=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Helena Calderaro</p>
+                </div>
             </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkd0YeLlXN7b46vqWUu7o0nxR1G0TrxiElNjrXgc-Fqq-fEA0EV5oknESWHuWElsZSMF3GVstRI2aX7SFX4dUyCI8JZSSRjT7NQNWNj2tG3RY9XmLsbdnQV0wYi-HgeAlEKr7Qc6h29UCzKb4N3glfVhSY9AGHylCWuEPdVoRCfhFJvW1vf67SqEMCJvil-RkD2TP4C1_5fQ7Xpq9GSwVMtuYEwirP6PzV2h=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Luna Berger</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCke9tuXJyrqm3BEFzWFbai1FAk4Ki6lK5HJn1zMh5o4BBfKFU1AmMwrt4q9RQf5pvIc95ZPfNvm3kUyBnzz-nOOTdxRMT_qED6DIuA4glQmCKLF2qlu3hkNui5w-TOOpjqmXivwITn6D5TdG-goauqgP6Jkh-RajOZh4VcFojKb0eFw1tvCB7RhIIu34iA9Q0WF8CrA_QVhSyilt6wd4okDLyQ7OH4L3uTlv=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Miguel Fortunato</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkeOo3lkI3ke1pwgQFJtzCcouwzUyksJRDhZDg2Xp_GzK5383qcdukvhJ5PC0jPWPCsDQGSg8mqaZ4orPNHl61076a1WxbuUy_dILySF6AqQjQdVRl8j__r5WR7VsNKUqyu9sIIYzPueLxJnCp4wKF0nQ0l1jnatwlFHfrRDV4EmC0tuCq9PQK74_W7jd8u2oAx3cQvS4oghPlRjWhAkHwOj8mKkmhRKVpZa_rA=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Maria Eduarda Figueroa</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfOPtu9GCGjh8_UhPPdxuEbSdzgXE9EAnXdGNaOHhKdGac_ZDsfWWqpLFZTCH8DidVriHYWaiqnXcJFrQh0VyQ4SiaPAQ9XQLEfMLKHh8KJFV4WTJHBfiUQUML9y3dyajKyodC_1ZkNniSR6kTAjluRSf0aqaHW0xV6tVZAnm3dWHtf-xJDAc-7fyTXXAc5hXGbqGZ-EXbzSfhbE1EL9_wDWYu5SthuGj-xODU=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Bruno Zequi</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="article-content">
+            <p>Esta colección de trabajos representa nuestras diversas perspectivas sobre lo que significa ser joven en el mundo actual. Cada imagen y texto refleja nuestras experiencias, sueños y desafíos únicos.</p>
+            
+            <p>Como estudiantes del 8º año A, creemos que es importante compartir nuestras voces y perspectivas sobre temas que nos afectan directamente. La juventud no es solo una etapa de preparación para la vida adulta, sino un período valioso en sí mismo, lleno de descubrimientos, crecimiento y oportunidades para hacer una diferencia en nuestro mundo.</p>
         </div>
     </section>
 
