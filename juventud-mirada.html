@@ -141,6 +141,8 @@
             font-size: 24px;
             color: var(--primary-color);
             cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
         }
         
         /* Hero Section */
@@ -475,6 +477,7 @@
             .header-container {
                 flex-direction: column;
                 text-align: center;
+                position: relative;
             }
             
             .logo {
@@ -572,14 +575,14 @@
                 </a>
                 <div class="site-title">BGB News</div>
             </div>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" aria-label="Abrir menu de navegação">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="youth-and-sustainability.html">Youth and Sustainability</a></li>
-                    <li><a href="la-juventud-según-nuestra-mirada.html" class="active">La juventud según nuestra mirada</a></li>
+                    <li><a href="juventud-mirada.html" class="active">La juventud según nuestra mirada</a></li>
                     <li><a href="health.html">Health</a></li>
                     <li><a href="social-issues.html">Social Issues</a></li>
                     <li><a href="culture-and-entertainment.html">Culture and Entertainment</a></li>
@@ -718,6 +721,29 @@
                 mainNav.classList.toggle('active');
                 mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-label', mainNav.classList.contains('active') ? 
+                    'Fechar menu de navegação' : 'Abrir menu de navegação');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (mainNav.classList.contains('active') && 
+                    !event.target.closest('.main-nav') && 
+                    !event.target.closest('.mobile-menu-btn')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
+                }
             });
             
             // Header hide/show on scroll
@@ -726,6 +752,12 @@
             
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Don't hide header if mobile menu is open
+                if (mainNav.classList.contains('active')) {
+                    header.classList.remove('hidden');
+                    return;
+                }
                 
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
                     // Scrolling down
@@ -755,15 +787,29 @@
                 });
             });
             
-            // Add active class to nav links based on current page
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.main-nav a');
+            // Set active navigation link based on current page
+            function setActiveNavLink() {
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.main-nav a');
+                
+                navLinks.forEach(link => {
+                    // Remove active class from all links
+                    link.classList.remove('active');
+                    
+                    // Check if the link href matches the current page
+                    if (link.getAttribute('href') === currentPage) {
+                        link.classList.add('active');
+                    }
+                    
+                    // Special case for index.html
+                    if (currentPage === 'index.html' && link.getAttribute('href') === 'index.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }
             
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
+            // Initialize active navigation link
+            setActiveNavLink();
         });
     </script>
 </body>
