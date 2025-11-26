@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGB News - Jornal Escolar</title>
+    <title>La juventud según nuestra mirada - BGB News</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -141,25 +141,24 @@
             font-size: 24px;
             color: var(--primary-color);
             cursor: pointer;
-            padding: 5px;
-            z-index: 1001;
         }
         
         /* Hero Section */
-        .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCkeyECBM_daQbIN0ysvmpRjA8RjTnfbUACCtCYP99vYtjECDzg-jE7R1I60XWkQWV2GqXSSNrx1bqQs1AE2es7hLcIpjzheOa2ixQ-Zhip0KGnfmnDQ7xfRN28STKhpTzBE4qJy0-XAyGf73ioBsxGfmPl4_393F4cQMX06E2AR4Kjn1mUM4P1rmlJQ=w16383');
+        .page-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCkdRoJ6nxcHVIXPQzidKGXvbMQ92ebeirEiTFK9_LIuQeOzszTmFr0OXulBE3XjT6lbNIanaseXuzhXV-mv2k0HSUUj9WxySrRV64UbgArjXiBM7ZdWBdW5f2Zcs8WulXyBs3b1ePToxhE1t47vXPnvaZLqvqpaRHdHT5kUScYdAs6lqtPVGttRuvhQ=w16383');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            height: 100vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
         
-        .hero::after {
+        .page-hero::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -169,7 +168,7 @@
             background: linear-gradient(transparent, var(--white));
         }
         
-        .hero-content {
+        .page-hero-content {
             text-align: center;
             color: var(--white);
             max-width: 800px;
@@ -178,39 +177,18 @@
             z-index: 1;
         }
         
-        .hero-title {
-            font-size: 4rem;
+        .page-hero-title {
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-family: Verdana, Arial;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            animation: pulse 2s infinite;
         }
         
-        .hero-subtitle {
-            font-size: 2rem;
-            font-weight: 600;
-            font-family: Comfortaa, Arial;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+        .page-hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
             opacity: 0.9;
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--white);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            z-index: 2;
         }
         
         /* Section Styles */
@@ -241,106 +219,67 @@
             border-radius: 2px;
         }
         
-        /* Highlights Grid */
-        .highlights {
+        /* Article Styles */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .article-content h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Gallery Styles */
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin: 3rem 0;
         }
         
-        .highlight-card {
+        .gallery-item {
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
         }
         
-        .highlight-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .highlight-card:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        .highlight-card:hover {
-            transform: translateY(-10px);
+        .gallery-item:hover {
+            transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .card-image {
+        .gallery-image {
             width: 100%;
-            height: 200px;
+            height: 300px;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .highlight-card:hover .card-image {
+        .gallery-item:hover .gallery-image {
             transform: scale(1.05);
         }
         
-        .card-content {
-            padding: 25px;
+        .gallery-caption {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--light-color);
         }
         
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+        .gallery-author {
+            font-weight: 600;
             color: var(--primary-color);
-            font-weight: 700;
-        }
-        
-        .card-excerpt {
-            margin-bottom: 20px;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .read-more::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: var(--transition);
-        }
-        
-        .read-more:hover::before {
-            left: 100%;
-        }
-        
-        .read-more:hover {
-            background-color: var(--accent-color);
-            transform: translateX(5px);
-        }
-        
-        .read-more i {
-            margin-left: 8px;
-            transition: var(--transition);
-        }
-        
-        .read-more:hover i {
-            transform: translateX(5px);
+            margin-top: 10px;
         }
         
         /* Footer */
@@ -399,6 +338,38 @@
             border-top: 1px solid #ddd;
             color: #666;
             font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
         }
         
         /* Floating Elements */
@@ -466,30 +437,6 @@
             }
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-        
         @keyframes float {
             0% {
                 transform: translate(0, 0) rotate(0deg);
@@ -510,12 +457,12 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-title {
+            .page-hero-title {
                 font-size: 3rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.8rem;
+            .page-hero-subtitle {
+                font-size: 1.3rem;
             }
             
             .main-nav a {
@@ -528,7 +475,6 @@
             .header-container {
                 flex-direction: column;
                 text-align: center;
-                position: relative;
             }
             
             .logo {
@@ -569,38 +515,42 @@
                 right: 20px;
             }
             
-            .hero-title {
+            .page-hero-title {
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
+            .page-hero-subtitle {
+                font-size: 1.2rem;
             }
             
             .section-title {
                 font-size: 2rem;
             }
+            
+            .gallery-image {
+                height: 250px;
+            }
         }
         
         @media (max-width: 576px) {
-            .hero-title {
+            .page-hero-title {
                 font-size: 2rem;
             }
             
-            .hero-subtitle {
-                font-size: 1.3rem;
+            .page-hero-subtitle {
+                font-size: 1rem;
             }
             
             .section {
                 padding: 60px 15px;
             }
             
-            .highlights {
+            .gallery {
                 grid-template-columns: 1fr;
+            }
+            
+            .gallery-image {
+                height: 200px;
             }
         }
     </style>
@@ -617,17 +567,19 @@
     <header class="site-header">
         <div class="header-container">
             <div class="logo">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkca6e9jaQ1hP5Nmnfl_BScElChhegffXjvBJls7WCT5MX3WHZQPzQJM6PZP4lV9b3inMstcimGA_UWntZRX_0M3oHX98cfrhSYUr6YokMKtMfyiCSZnzjAW_A7s7ZmMWOinOkLl6Z5ts9Vr9vHbMjm5sdA5XshQLLwpHuur7bz8-V1sdR50GyrhXrM=w16383" alt="BGB News Logo">
+                <a href="index.html">
+                    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkca6e9jaQ1hP5Nmnfl_BScElChhegffXjvBJls7WCT5MX3WHZQPzQJM6PZP4lV9b3inMstcimGA_UWntZRX_0M3oHX98cfrhSYUr6YokMKtMfyiCSZnzjAW_A7s7ZmMWOinOkLl6Z5ts9Vr9vHbMjm5sdA5XshQLLwpHuur7bz8-V1sdR50GyrhXrM=w16383" alt="BGB News Logo">
+                </a>
                 <div class="site-title">BGB News</div>
             </div>
-            <button class="mobile-menu-btn" aria-label="Abrir menu de navegação">
+            <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="index.html">Início</a></li>
                     <li><a href="youth-and-sustainability.html">Youth and Sustainability</a></li>
-                    <li><a href="juventud-mirada.html">La juventud según nuestra mirada</a></li>
+                    <li><a href="la-juventud-según-nuestra-mirada.html" class="active">La juventud según nuestra mirada</a></li>
                     <li><a href="health.html">Health</a></li>
                     <li><a href="social-issues.html">Social Issues</a></li>
                     <li><a href="culture-and-entertainment.html">Culture and Entertainment</a></li>
@@ -639,78 +591,88 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">BGB News</h1>
-            <p class="hero-subtitle">Jornal escolar da Builders</p>
-            <p class="hero-description">Jornal multilíngue produzido pelos alunos do 8º ano A<br>Edição de setembro de 2025</p>
-        </div>
-        <div class="scroll-indicator" aria-label="Role para baixo para ver mais conteúdo">
-            <i class="fas fa-chevron-down"></i>
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">La juventud según nuestra mirada</h1>
+            <p class="page-hero-subtitle">Una perspectiva única sobre la juventud desde nuestra visión particular</p>
         </div>
     </section>
 
-    <!-- Highlights Section -->
+    <!-- Article Section -->
     <section class="section">
-        <h2 class="section-title">DESTAQUES DA EDIÇÃO</h2>
+        <h2 class="section-title">La juventud según nuestra mirada</h2>
         
-        <div class="highlights">
-            <div class="highlight-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc3F4XS53aCwXO-3nnGAkukuyvGQ2D1CD2I94LpGvhBvIpNnZLd33nJvUXVr1DifR286Wn9mM8aDEAPmGinwFrFt6YcsoYa0FHmxbSLeAHIdY41WsNaY2UMT8oMiF1AVZpwfYGp2NOyzgMyKSkY7Rj3fWECl56vpl_JKBNt1ljb5GSjkrFtF-Sg_OPbuhW8XXItBkZVgOACTGbHw7p-tIudI4dFYgLbk_MIneQ=w1280" alt="What is gender inequality?" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">What is gender inequality? Why does it exist?</h3>
-                    <p class="card-excerpt">Gender inequality happens when a gender has more privileges than the other, it is the stereotyping of what is feminine and what is masculine, that occurs normally with women. [...]</p>
-                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+        <div class="article-content">
+            <p>La juventud es una etapa de la vida llena de cambios, descubrimientos y desafíos. Es un período en el que comenzamos a formar nuestra identidad, a descubrir nuestras pasiones y a enfrentarnos a las responsabilidades del mundo adulto. Desde nuestra perspectiva como jóvenes, queremos compartir cómo vivimos esta etapa y qué significa para nosotros.</p>
+            
+            <h3>Los desafíos de la juventud moderna</h3>
+            
+            <p>Vivimos en un mundo cada vez más conectado pero, paradójicamente, muchos jóvenes se sienten más solos que nunca. Las redes sociales nos permiten comunicarnos con personas de todo el mundo, pero también pueden generar presión por mantener una imagen perfecta y una vida aparentemente exitosa.</p>
+            
+            <p>Además, enfrentamos la incertidumbre sobre nuestro futuro en un mundo que cambia rápidamente. La crisis climática, las transformaciones tecnológicas y las inestabilidades económicas nos plantean preguntas difíciles sobre qué camino seguir.</p>
+            
+            <h3>La importancia de la educación</h3>
+            
+            <p>La educación juega un papel fundamental en nuestra formación como jóvenes. No solo nos proporciona conocimientos académicos, sino que también nos ayuda a desarrollar habilidades críticas, a entender diferentes perspectivas y a prepararnos para los desafíos del futuro.</p>
+            
+            <p>Sin embargo, creemos que la educación debería adaptarse mejor a las realidades del mundo actual, incorporando más habilidades prácticas, educación emocional y oportunidades para explorar nuestras pasiones.</p>
+            
+            <h3>Nuestras aspiraciones y sueños</h3>
+            
+            <p>A pesar de los obstáculos, los jóvenes mantenemos la esperanza y la ambición. Soñamos con un mundo más justo, sostenible e inclusivo. Aspiramos a carreras que nos apasionen, a relaciones significativas y a contribuir positivamente a nuestra sociedad.</p>
+            
+            <p>Valoramos la autenticidad, la diversidad y la libertad para ser quienes realmente somos. Queremos ser escuchados y tomar parte activa en la construcción de nuestro futuro.</p>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkf57fw5YiWtECcusbY2SMtt4YrlycTpJJhu1TFyGavwcWemr04oCVhNpQ-EPkWkhM_ZNMx8UdAAg46NZEF6LqZ-lNxw9X2XzoQO6S0KyAqR-JuwBSbV29_NuYQkY1K9U15ERPMtYHWYPBz36cWz9TGh38yIsm8r3tvhqChYLbwelwkqntnrSGuFetAZ4voDS3F8cMs7lYqwZVXmon8-a3xogs9FUcS_cK7ZewI=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Lorena Chinchio</p>
                 </div>
             </div>
             
-            <div class="highlight-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfn5pndfRwC8c8Bv3JvUMPNRh4hs9ViTrTM5pUQZXAKrQZ3WhZKuwPQMU1-swAmm3py2z9RUMccpz1S0pG9oR8QyZj3N8Q1-AuJnADtW6ELO-2NMX4haFUih8fa_bKNgLU8MPHv_BM_mpDO4G_GXf2IFrTUcCz1JUFA4q-rxC6dGrnONF0VNuVnp9ZCEMjK83UG3MNIvKJ1wGFFhQjWV2cE3CAhrX-CpBNlXYc=w1280" alt="La juventud según nuestra mirada" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">La juventud según nuestra mirada</h3>
-                    <p class="card-excerpt">Una perspectiva única sobre la juventud desde nuestra visión particular.</p>
-                    <a href="juventud-mirada.html" class="read-more">Lea más <i class="fas fa-arrow-right"></i></a>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkcCkbBh4RlRLRwAaKOBi3ExCTnFqZ0khfnmspr05FaEWh4YDJ7bU0js6zxe85M9eFt1BNqiOhUW9aoDsomOpeKzigUYe_YSn4dV4icpJuJR2SWmfaxuH36OvMrYyquYdPfSP9xie0I-9UDF6kJqQy2oG3R_CmihsHDt94T-n526os2JYRIfN6g1kc3uGEIDupVv3uF_uCZdpxpUGTqLbdodqJZGKUUI88fjfoQ=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Helena Calderaro</p>
                 </div>
             </div>
             
-            <div class="highlight-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkdZ5VpU_jnIS5I1scZSmxBik9KG3NrpfboAkCPinIcjI6TP3D14BTy0lSN-NM9P4vPUIU2fU6bCMh6evtSpDfiC11Roy094MnrQo8PpPfIJnN7kMBoWy70J0RVMLMZ-yTJ9RpexnAGds8Or7RyOgRzvbKXVYV72bZXttiAi-Uckr4QPWtCrfUBMfUqFERo_830RXviuR2o-U_TTjYBpBX70LGhZ8xbFdlkf=w1280" alt="Is Maus worth it or not?" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Is Maus worth it or not?</h3>
-                    <p class="card-excerpt">Have you ever experienced a traumatic event like the Holocaust? Well, Vladek has. In the book Maus, written by his son Art Spiegelman, we follow the story of Vladek during the Holocaust. [...]</p>
-                    <a href="culture-and-entertainment.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkd0YeLlXN7b46vqWUu7o0nxR1G0TrxiElNjrXgc-Fqq-fEA0EV5oknESWHuWElsZSMF3GVstRI2aX7SFX4dUyCI8JZSSRjT7NQNWNj2tG3RY9XmLsbdnQV0wYi-HgeAlEKr7Qc6h29UCzKb4N3glfVhSY9AGHylCWuEPdVoRCfhFJvW1vf67SqEMCJvil-RkD2TP4C1_5fQ7Xpq9GSwVMtuYEwirP6PzV2h=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Luna Berger</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCke9tuXJyrqm3BEFzWFbai1FAk4Ki6lK5HJn1zMh5o4BBfKFU1AmMwrt4q9RQf5pvIc95ZPfNvm3kUyBnzz-nOOTdxRMT_qED6DIuA4glQmCKLF2qlu3hkNui5w-TOOpjqmXivwITn6D5TdG-goauqgP6Jkh-RajOZh4VcFojKb0eFw1tvCB7RhIIu34iA9Q0WF8CrA_QVhSyilt6wd4okDLyQ7OH4L3uTlv=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Miguel Fortunato</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkeOo3lkI3ke1pwgQFJtzCcouwzUyksJRDhZDg2Xp_GzK5383qcdukvhJ5PC0jPWPCsDQGSg8mqaZ4orPNHl61076a1WxbuUy_dILySF6AqQjQdVRl8j__r5WR7VsNKUqyu9sIIYzPueLxJnCp4wKF0nQ0l1jnatwlFHfrRDV4EmC0tuCq9PQK74_W7jd8u2oAx3cQvS4oghPlRjWhAkHwOj8mKkmhRKVpZa_rA=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Maria Eduarda Figueroa</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfOPtu9GCGjh8_UhPPdxuEbSdzgXE9EAnXdGNaOHhKdGac_ZDsfWWqpLFZTCH8DidVriHYWaiqnXcJFrQh0VyQ4SiaPAQ9XQLEfMLKHh8KJFV4WTJHBfiUQUML9y3dyajKyodC_1ZkNniSR6kTAjluRSf0aqaHW0xV6tVZAnm3dWHtf-xJDAc-7fyTXXAc5hXGbqGZ-EXbzSfhbE1EL9_wDWYu5SthuGj-xODU=w1280" alt="La juventud según nuestra mirada" class="gallery-image">
+                <div class="gallery-caption">
+                    <p>Hecho por: Bruno Zequi</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Additional Articles Section -->
-    <section class="section">
-        <h2 class="section-title">MAIS ARTIGOS</h2>
-        <div class="highlights">
-            <div class="highlight-card">
-                <div class="card-content">
-                    <h3 class="card-title">Voices of resilience</h3>
-                    <p class="card-excerpt">Brazil's black youth face systematic challenges rooted in centuries of racial inequality. Despite comprising over half of the nation's population, they encounter disparities in education, employment, and social mobility, perpetuating cycles of poverty and marginalization. [...]</p>
-                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+        
+        <div class="article-content">
+            <p>Esta colección de trabajos representa nuestras diversas perspectivas sobre lo que significa ser joven en el mundo actual. Cada imagen y texto refleja nuestras experiencias, sueños y desafíos únicos.</p>
             
-            <div class="highlight-card">
-                <div class="card-content">
-                    <h3 class="card-title">Extreme use of testosterone: Is it safe or not?</h3>
-                    <p class="card-excerpt">Big muscles and perfect shape in a short time. The question is: are they really natural? Well, this trend is very popular among adults, but mostly among teenagers who seek stronger muscles by injecting testosterone. [...]</p>
-                    <a href="health.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="highlight-card">
-                <div class="card-content">
-                    <h3 class="card-title">Novas oportunidades são criadas a partir de projetos direcionados à juventude</h3>
-                    <p class="card-excerpt">Nos últimos anos, têm sido criados vários projetos para crianças e adolescentes. Eles têm ajudado muito os jovens que participam deles, por meio de atividades novas, como cozinhar, pintar, limpar, além de aulas de robótica e informática. [...]</p>
-                    <a href="youth-and-sustainability.html" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+            <p>Como estudiantes del 8º año A, creemos que es importante compartir nuestras voces y perspectivas sobre temas que nos afectan directamente. La juventud no es solo una etapa de preparación para la vida adulta, sino un período valioso en sí mismo, lleno de descubrimientos, crecimiento y oportunidades para hacer una diferencia en nuestro mundo.</p>
         </div>
     </section>
 
@@ -741,6 +703,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
@@ -751,29 +718,6 @@
                 mainNav.classList.toggle('active');
                 mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-                mobileMenuBtn.setAttribute('aria-label', mainNav.classList.contains('active') ? 
-                    'Fechar menu de navegação' : 'Abrir menu de navegação');
-            });
-            
-            // Close mobile menu when clicking on a link
-            const navLinks = document.querySelectorAll('.main-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
-                });
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (mainNav.classList.contains('active') && 
-                    !event.target.closest('.main-nav') && 
-                    !event.target.closest('.mobile-menu-btn')) {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
-                }
             });
             
             // Header hide/show on scroll
@@ -782,12 +726,6 @@
             
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Don't hide header if mobile menu is open
-                if (mainNav.classList.contains('active')) {
-                    header.classList.remove('hidden');
-                    return;
-                }
                 
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
                     // Scrolling down
@@ -798,74 +736,34 @@
                 }
                 
                 lastScrollTop = scrollTop;
+                
+                // Back to top button
+                const backToTop = document.querySelector('.back-to-top');
+                if (scrollTop > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
             });
             
-            // Scroll to content when clicking the scroll indicator
-            const scrollIndicator = document.querySelector('.scroll-indicator');
-            
-            scrollIndicator.addEventListener('click', function() {
+            // Back to top functionality
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.addEventListener('click', function() {
                 window.scrollTo({
-                    top: document.querySelector('.section').offsetTop - 80,
+                    top: 0,
                     behavior: 'smooth'
                 });
             });
             
-            // Animate elements on scroll
-            const animateOnScroll = function() {
-                const cards = document.querySelectorAll('.highlight-card');
-                
-                cards.forEach(card => {
-                    const cardPosition = card.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
-                    
-                    if (cardPosition < screenPosition) {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }
-                });
-            };
+            // Add active class to nav links based on current page
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav a');
             
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Add hover effect to cards
-            const cards = document.querySelectorAll('.highlight-card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
             });
-            
-            // Set active navigation link based on current page
-            function setActiveNavLink() {
-                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-                const navLinks = document.querySelectorAll('.main-nav a');
-                
-                navLinks.forEach(link => {
-                    // Remove active class from all links
-                    link.classList.remove('active');
-                    
-                    // Check if the link href matches the current page
-                    if (link.getAttribute('href') === currentPage) {
-                        link.classList.add('active');
-                    }
-                    
-                    // Special case for index.html
-                    if (currentPage === 'index.html' && link.getAttribute('href') === 'index.html') {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            // Initialize active navigation link
-            setActiveNavLink();
-            
-            // Initialize animations
-            animateOnScroll();
         });
     </script>
 </body>
