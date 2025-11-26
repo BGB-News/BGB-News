@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGB News - Social Issues</title>
+    <title>BGB News - Jornal Escolar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #007888;
@@ -80,17 +80,18 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-color);
-            font-family: 'PT Sans', sans-serif;
+            font-family: Verdana, Arial;
         }
         
-        /* Navigation */
+        /* Navigation - ITENS ALINHADOS */
         .main-nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
         
         .main-nav li {
-            margin-left: 20px;
+            margin-left: 15px;
             position: relative;
         }
         
@@ -103,6 +104,10 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 0.9rem;
         }
         
         .main-nav a::before {
@@ -135,21 +140,30 @@
         }
         
         /* Hero Section */
-        .page-hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCke_7tdv23xAIc1zai1GrIL0VDafgf5_c1SO9TfUFCf-HtDICnS0L8EXNWQApKaN47VTgQvEstqM4fVquEw6yRv_IAptjIp9zDExrZ1qsTR4WFxUAP_btf4nvneXtyKgx89jI3WTm6rNcO09LlaryL_tXt5sjAFk8C6qnUF6c0PuoiIGs_ldW8KnFpg=w16383');
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCkeyECBM_daQbIN0ysvmpRjA8RjTnfbUACCtCYP99vYtjECDzg-jE7R1I60XWkQWV2GqXSSNrx1bqQs1AE2es7hLcIpjzheOa2ixQ-Zhip0KGnfmnDQ7xfRN28STKhpTzBE4qJy0-XAyGf73ioBsxGfmPl4_393F4cQMX06E2AR4Kjn1mUM4P1rmlJQ=w16383');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            height: 60vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
         }
         
-        .page-hero-content {
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--white));
+        }
+        
+        .hero-content {
             text-align: center;
             color: var(--white);
             max-width: 800px;
@@ -158,18 +172,39 @@
             z-index: 1;
         }
         
-        .page-hero-title {
-            font-size: 3.5rem;
+        .hero-title {
+            font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            font-family: 'PT Sans', sans-serif;
+            margin-bottom: 10px;
+            font-family: Verdana, Arial;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s infinite;
         }
         
-        .page-hero-subtitle {
-            font-size: 1.5rem;
-            font-weight: 400;
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: Comfortaa, Arial;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             opacity: 0.9;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
         }
         
         /* Section Styles */
@@ -184,7 +219,7 @@
             font-size: 2.5rem;
             margin-bottom: 50px;
             color: var(--primary-color);
-            font-family: 'PT Sans', sans-serif;
+            font-family: Verdana, Arial;
             position: relative;
         }
         
@@ -200,547 +235,66 @@
             border-radius: 2px;
         }
         
-        /* Article Styles */
-        .article-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .article-content p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-        
-        .article-content h3 {
-            color: var(--primary-color);
-            margin: 2rem 0 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .article-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin: 2rem 0;
-            box-shadow: var(--shadow);
-        }
-        
-        .warning-box {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-        
-        .warning-title {
-            font-weight: 700;
-            color: #856404;
-            margin-bottom: 0.5rem;
-        }
-        
-        .author-info {
-            background-color: var(--light-color);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 3rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .author-name {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Featured Articles Section */
-        .featured-articles {
+        /* Highlights Grid */
+        .highlights {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
         
-        .article-card {
+        .highlight-card {
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
         
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        .highlight-card:nth-child(2) {
+            animation-delay: 0.2s;
         }
         
-        .article-card-image {
+        .highlight-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: var(--transition);
         }
         
-        .article-card-content {
-            padding: 20px;
+        .highlight-card:hover .card-image {
+            transform: scale(1.05);
         }
         
-        .article-card-title {
-            font-size: 1.3rem;
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
-            margin-bottom: 10px;
             font-weight: 700;
         }
         
-        .article-card-excerpt {
-            color: var(--text-color);
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .article-card-link {
-            display: inline-block;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .article-card-link:hover {
-            color: var(--accent-color);
-        }
-        
-        /* Footer */
-        .site-footer {
-            background-color: var(--light-color);
-            padding: 60px 20px 20px;
-            margin-top: 60px;
-            position: relative;
-        }
-        
-        .site-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        
-        .footer-section h3 {
+        .card-excerpt {
             margin-bottom: 20px;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .footer-section p {
-            margin-bottom: 12px;
+            color: #666;
             line-height: 1.6;
         }
         
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
+        .read-more {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-5px);
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .main-nav {
-                width: 100%;
-                margin-top: 15px;
-                display: none;
-            }
-            
-            .main-nav.active {
-                display: block;
-            }
-            
-            .main-nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .main-nav li {
-                margin: 8px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            .page-hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .page-hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .featured-articles {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .page-hero-title {
-                font-size: 2rem;
-            }
-            
-            .page-hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 60px 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="/view/bgb-news/início">
-                    <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkcL_LRNLJ1WxpaTN0ZKnIP5Z4mKuyPlxFxry6dr-RIwvqspfitE8c4w3YESHfxYRfL1REkHd2Y7tupMgI62aBE4AmXS9E4xfFvXqP6ufXetzZBsxaUzkcyRIbc37tpoIm3fchRv28dXiegOXA__zrh2y0pyvbzypFTOxlCEXx2bQOWiBqwriyvu-lU=w16383" alt="BGB News Logo">
-                </a>
-                <div class="site-title">BGB News</div>
-            </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/view/bgb-news/início">Início</a></li>
-                    <li><a href="/view/bgb-news/youth-and-sustainability">Youth and Sustainability</a></li>
-                    <li><a href="/view/bgb-news/health">La juventud según nuestra mirada</a></li>
-                    <li><a href="/view/bgb-news/health">Health</a></li>
-                    <li><a href="/view/bgb-news/social-issues" class="active">Social Issues</a></li>
-                    <li><a href="/view/bgb-news/culture-and-entertainment">Culture and Entertainment</a></li>
-                    <li><a href="/view/bgb-news/editoriais">Editoriais</a></li>
-                    <li><a href="/view/bgb-news/entrevistas">Entrevistas</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <h1 class="page-hero-title">Social Issues</h1>
-            <p class="page-hero-subtitle">(History)</p>
-        </div>
-    </section>
-
-    <!-- Article Section -->
-    <section class="section">
-        <h2 class="section-title">Attacking Indigenous Lands Is Also an Attack on Humanity</h2>
-        
-        <div class="article-content">
-            <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkcOX_LcVZIgjdR0DSBirrYI3LhJX_HoAOSD2RdN6U73XfZ-XtRqZFTWNNnddDKhOGC53Jr4GgyBY5ieCSezUO2qwUfrmR-OFLeQ5qURFM4CK_8haOnQ3P4yblTytLAQ7R2kpsRa2j_mldWKoc4VAtdOPaNGGmFQIoy_YOhsHdpW3B5ZxPXLHYtSgD4ZIpLMQ2RS63-iVekm3IO02eoeH83huInnytORq9o=w1280" alt="Devastation in Indigenous lands" class="article-image">
-            
-            <p>To this day, Indigenous youth continue suffer a lot due to climate change, illegal mining and other harmful actions. The truth is that those who do this to Indigenous people are not only harming them, they are also harming themselves. Our environment and their home must not be destroyed; they must be protected!</p>
-            
-            <h3>The Impact on Indigenous Communities</h3>
-            
-            <p>The environment is one of the most important topics in current affairs. Many people suffer because of those who irresponsibly destroy it, especially Indigenous communities, since nature is their home. During the Terra Livre Camp, 25-year-old Maluá Karajá highlighted the scarcity of fish on Bananal Island and the impacts of the fires: "global warming is changing the daily life and way of life of native peoples" she affirms, and after stresses: "the environment without indigenous peoples is to ignore those who protect the biomes the most". She shows that the environment and this violence is truly a serious issue, we need to protect indigenous people without differences and take care of the rest of the nature we have in the world.</p>
-            
-            <div class="warning-box">
-                <div class="warning-title">Environmental Crisis</div>
-                <p>Illegal gold mining in the Yanomami Indigenous Land in northern Brazil has led to environmental destruction, mercury contamination, and social disintegration.</p>
-            </div>
-            
-            <h3>Voices from the Frontlines</h3>
-            
-            <p>According to Julio Yek'wana, one of the community leaders in the state of Roraima: <em>"Illegal mining has destroyed everything. Our river became muddy and contaminated. We can no longer fish, and the animals have fled far away because of the noise of the generators and machines."</em> Julio shares a firsthand Indigenous experience, an important and powerful evidence of how destructive those illegalities can be.</p>
-            
-            <p>The environment must be protected, and those who destroy it must be stopped, otherwise we will all face serious consequences. It is essential to preserve our natural resources and protect indigenous people like us. We can't treat them differently just because they don't have the same way of life as the majority of the world.</p>
-            
-            <div class="author-info">
-                <p class="author-name">By: Davi Guedes</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Second Article Section -->
-    <section class="section">
-        <h2 class="section-title">Voices of Resilience</h2>
-        
-        <div class="article-content">
-            <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkdSSBr-v5-ncy2K8OJ2Z6HgwMke2RJEEmkZI64SpVHlZ981BFlaMXd2ohtT6fYRP9_5TdWYoInS_eP9ydzoKG09L_VUSNMWiLvpiWwCJn-HJIYBIDo9vIORctAeUj0y0osEoNGMHYpYzC6LIDc7w-Ps7J8-XRlCmJRav7wqoLYNjDpjU_N36Cxh8V_IP4zDbeuA8_cNqrTSsEeAf4Ctvb-yz80VJIFsumtP=w1280" alt="Youth advocacy" class="article-image">
-            
-            <p>Brazil's black youth face systematic challenges rooted in centuries of racial inequality. Despite comprising over half of the nation's population, they encounter disparities in education, employment, and social mobility, perpetuating cycles of poverty and marginalization.</p>
-            
-            <h3>Educational Disparities</h3>
-            
-            <p>Access to quality education remains a significant hurdle. Illiteracy rates are notably higher among black Brazilians, with 8.9% compared to 3.6% in their white counterparts. Furthermore, only 18.3% of black youth aged 18-24 are enrolled in higher education, a stark contrast to 36.1% of white youth in the same age group. These disparities are exacerbated by underrepresentation in curricula, where just 19.5% of images in Brazilian texts depict Afro-descendant individuals.</p>
-            
-            <h3>Employment Challenges</h3>
-            
-            <p>The job market presents additional obstacles. A World Bank study highlights that young black men and women often find themselves in low-paying, informal jobs due to limited access to quality education and professional networks. Discrimination further compounds these challenges, with reporting biases based on appearance and skin color during hiring processes.</p>
-            
-            <h3>Social Exclusion and Violence</h3>
-            
-            <p>Social exclusion is evident, with a significant portion of black youth neither working in studies. In 2021, 41,9% of black or brown women aged 15-29 whether employed more education, compared to 12,5% of white men. Tragically, violence disproportionately affects this demographic; every 23 minutes a young black person is murdered in Brazil, with homicide rates for black youth being 2.88 times higher for their white peers.</p>
-            
-            <h3>Resilience and Hope</h3>
-            
-            <p>Despite these adversities, black youth in Brazil demonstrate remarkable resilience. Initiatives like Quibombarque in São Paulo revive the spirit of historical quilombos, creating spaces for cultural expression and community solidarity. Additionally, the rise of esports in "favelas" affects new avenues for youth to showcase talent and aspire for a better future.</p>
-            
-            <p>The challenges faced by black youth in Brazil are multifaceted, stemming from deep-rooted historical and systemic inequalities. Addressing this issues requires comprehensive policy reforms, inclusive educational practices, and societal commitment to dismantling racism. By amplifying the voices and aspirations of black youth, Brazil can pave the way for a more equitable and just future.</p>
-            
-            <div class="author-info">
-                <p class="author-name">By: Alice Reis</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Third Article Section -->
-    <section class="section">
-        <h2 class="section-title">Black Youth in Brazil: Living Under Violence and Neglect</h2>
-        
-        <div class="article-content">
-            <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkf2qN4MxLH2ddEgGUDFOI6YyQB7iBEoxSXOnXDjVWxjfPBHOnjJ2uglLynNArX50LwQbTG05hm0vVrftxpe4z7qyqiHIe0I2JRJ3LM--8A6m0ZAU2VbUYoKyuM81kFrKAv97Um11xfB3nbQ-ErrhWGHVZxgu0p7G1gBoVL06iVI4hWUVbhnqpWfmWcAVR1xsFtd3xQbkenxLf29BP6AXjia5uewxGvErGD3Jlg=w1280" alt="Black youth in Brazil" class="article-image">
-            
-            <p>The reality faced by Black youth in Brazil is alarming and demands urgent attention. Every day, dozens of young Black Brazilians are killed, most of them living in marginalized areas with limited access to basic rights like education, health, and safety. This situation is not just the result of violence, but of a historical structure of racism and neglect. From this perspective, it is essential to recognize that talking about the struggles of Black youth is not only important, it is necessary for building a more just and equal society.</p>
-            
-            <h3>Alarming Statistics</h3>
-            
-            <p>In 2023, Black youth aged 15 to 29 made up nearly half of all homicide victims in Brazil, about 21,856 people, or 60 deaths per day. This tragic number proves that the violence they face is not a coincidence, but the result of a long history of racism and neglect. Many live in poor areas without access to good schools, healthcare, or safety. From this point of view, it is clear that they are not just victims of crime, but of a system that keeps excluding them and that's why this issue must be discussed and changed.</p>
-            
-            <h3>Systemic Inequality</h3>
-            
-            <p>The majority of homicide victims are black: in 2023, 77% of those murdered were black or mixed (Pardo). This are only a part of what black youth go through in their lives.</p>
-            
-            <p>The high rate of violence against the black youth in Brazil reveal deep structural inequality and systemic racism. It is important to talk about this issue because only by recognizing the problem and preventing it can we create a more fair and collaborative society.</p>
-            
-            <div class="author-info">
-                <p class="author-name">By: Lorena Chinchio</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Articles Section -->
-    <section class="section">
-        <h2 class="section-title">Explore More Articles</h2>
-        
-        <div class="featured-articles">
-            <div class="article-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfkU3b9dGIf0Ohd-tBOF-BxVXeCMwudjMy2sJtZ8Tt_iw5kBeuf_FDTUPqgB-uqMnpP2AqaWW-r-Kq2EmcITNlF--aa71-o3Z6l5f9jfP3osHTn-h1H82FnTs9n_HPtr7xUZKWGLSHWRunad7KDxq_zJbPTkLuxVKnLe2K8--mCnX7ThAfLiHE1n9k=w16383" alt="Health" class="article-card-image">
-                <div class="article-card-content">
-                    <h3 class="article-card-title">La juventud según nuestra mirada</h3>
-                    <p class="article-card-excerpt">Una perspectiva única sobre la juventud desde nuestra visión particular.</p>
-                    <a href="/view/bgb-news/health" class="article-card-link">Read More →</a>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfkU3b9dGIf0Ohd-tBOF-BxVXeCMwudjMy2sJtZ8Tt_iw5kBeuf_FDTUPqgB-uqMnpP2AqaWW-r-Kq2EmcITNlF--aa71-o3Z6l5f9jfP3osHTn-h1H82FnTs9n_HPtr7xUZKWGLSHWRunad7KDxq_zJbPTkLuxVKnLe2K8--mCnX7ThAfLiHE1n9k=w16383" alt="Health" class="article-card-image">
-                <div class="article-card-content">
-                    <h3 class="article-card-title">Health</h3>
-                    <p class="article-card-excerpt">Extreme use of testosterone: Is it safe or not? Exploring health issues affecting youth today.</p>
-                    <a href="/view/bgb-news/health" class="article-card-link">Read More →</a>
-                </div>
-            </div>
-            
-            <div class="article-card">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfkU3b9dGIf0Ohd-tBOF-BxVXeCMwudjMy2sJtZ8Tt_iw5kBeuf_FDTUPqgB-uqMnpP2AqaWW-r-Kq2EmcITNlF--aa71-o3Z6l5f9jfP3osHTn-h1H82FnTs9n_HPtr7xUZKWGLSHWRunad7KDxq_zJbPTkLuxVKnLe2K8--mCnX7ThAfLiHE1n9k=w16383" alt="Youth and Sustainability" class="article-card-image">
-                <div class="article-card-content">
-                    <h3 class="article-card-title">Youth and Sustainability</h3>
-                    <p class="article-card-excerpt">How young people are leading the charge for environmental sustainability and change.</p>
-                    <a href="/view/bgb-news/youth-and-sustainability" class="article-card-link">Read More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Jornal produzido por:</h3>
-                <p>Alice Reis, Bruno Silva, Bruno Zequi, Davi Guedes, Helena Calderaro, João Victor Pereira, Leonardo Dias, Livia Bertellotti, Lorena Chinchio, Luna Berger, Maria Clara Oliveira, Maria Eduarda Figueroa, Miguel Bavaresco, Pedro Calil, Rafaela Guarniero e Sophia da Silva.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Equipe pedagógica</h3>
-                <p><strong>Diretora Pedagógica</strong> - Ana Célia Mustafá</p>
-                <p><strong>Coordenadora Geral</strong> - Andressa Pescuma</p>
-                <p><strong>Coordenadora Pedagógica</strong> - Renata Leal</p>
-                <p><strong>Coordenadora Acadêmica</strong> - Litza Amorim</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Professores envolvidos no projeto</h3>
-                <p>Anderson Carlos (Natural Sciences), Artur Gonçalves (Classroom Assistant), Camila Ferraz (Language Arts), Fernando Ribeiro (Geography), Juliana Lima (History), Rodolfo Henrique Silva (Língua Portuguesa e Español) e Vanessa Ferreira (Arts).</p>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2025 BGB News - Jornal escolar da Builders</p>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mainNav = document.querySelector('.main-nav');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Header hide/show on scroll
-            let lastScrollTop = 0;
-            const header = document.querySelector('.site-header');
-            
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Scrolling down
-                    header.classList.add('hidden');
-                } else {
-                    // Scrolling up
-                    header.classList.remove('hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-                
-                // Back to top button
-                const backToTop = document.querySelector('.back-to-top');
-                if (scrollTop > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-            
-            // Back to top functionality
-            const backToTop = document.querySelector('.back-to-top');
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Add active class to nav links based on current page
-            const currentPage = window.location.pathname;
-            const navLinks = document.querySelectorAll('.main-nav a');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            background-color: var(--primary-color);
