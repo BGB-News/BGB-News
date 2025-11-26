@@ -1,1 +1,815 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGB News - Jornal Escolar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007888;
+            --secondary-color: #c0da98;
+            --accent-color: #37767f;
+            --dark-color: #333;
+            --light-color: #f8f8f8;
+            --text-color: #333;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PT Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .site-header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+        
+        .site-header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .site-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: Verdana, Arial;
+        }
+        
+        /* Navigation - ITENS PERFEITAMENTE ALINHADOS */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .main-nav li {
+            margin: 0 8px;
+            position: relative;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            text-align: center;
+            height: 40px;
+        }
+        
+        .main-nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover::before,
+        .main-nav a.active::before {
+            width: 100%;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AAzXCkeyECBM_daQbIN0ysvmpRjA8RjTnfbUACCtCYP99vYtjECDzg-jE7R1I60XWkQWV2GqXSSNrx1bqQs1AE2es7hLcIpjzheOa2ixQ-Zhip0KGnfmnDQ7xfRN28STKhpTzBE4qJy0-XAyGf73ioBsxGfmPl4_393F4cQMX06E2AR4Kjn1mUM4P1rmlJQ=w16383');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--white));
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: Verdana, Arial;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: Comfortaa, Arial;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-family: Verdana, Arial;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        /* Highlights Grid */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .highlight-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .highlight-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .highlight-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .highlight-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .card-excerpt {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .read-more::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: var(--transition);
+        }
+        
+        .read-more:hover::before {
+            left: 100%;
+        }
+        
+        .read-more:hover {
+            background-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .read-more i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--light-color);
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(0, 120, 136, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 40px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 80px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-20px, 40px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .main-nav a {
+                font-size: 0.8rem;
+                padding: 6px 8px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .main-nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            .main-nav.active {
+                display: block;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .main-nav li {
+                margin: 8px 0;
+                width: 100%;
+            }
+            
+            .main-nav a {
+                justify-content: center;
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+            
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
 
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkca6e9jaQ1hP5Nmnfl_BScElChhegffXjvBJls7WCT5MX3WHZQPzQJM6PZP4lV9b3inMstcimGA_UWntZRX_0M3oHX98cfrhSYUr6YokMKtMfyiCSZnzjAW_A7s7ZmMWOinOkLl6Z5ts9Vr9vHbMjm5sdA5XshQLLwpHuur7bz8-V1sdR50GyrhXrM=w16383" alt="BGB News Logo">
+                <div class="site-title">BGB News</div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="youth-and-sustainability.html">Youth and Sustainability</a></li>
+                    <li><a href="la-juventud-según-nuestra-mirada.html">La juventud según nuestra mirada</a></li>
+                    <li><a href="health.html">Health</a></li>
+                    <li><a href="social-issues.html">Social Issues</a></li>
+                    <li><a href="culture-and-entertainment.html">Culture and Entertainment</a></li>
+                    <li><a href="editoriais.html">Editoriais</a></li>
+                    <li><a href="entrevistas.html">Entrevistas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">BGB News</h1>
+            <p class="hero-subtitle">Jornal escolar da Builders</p>
+            <p class="hero-description">Jornal multilíngue produzido pelos alunos do 8º ano A<br>Edição de setembro de 2025</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section">
+        <h2 class="section-title">DESTAQUES DA EDIÇÃO</h2>
+        
+        <div class="highlights">
+            <div class="highlight-card">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkc3F4XS53aCwXO-3nnGAkukuyvGQ2D1CD2I94LpGvhBvIpNnZLd33nJvUXVr1DifR286Wn9mM8aDEAPmGinwFrFt6YcsoYa0FHmxbSLeAHIdY41WsNaY2UMT8oMiF1AVZpwfYGp2NOyzgMyKSkY7Rj3fWECl56vpl_JKBNt1ljb5GSjkrFtF-Sg_OPbuhW8XXItBkZVgOACTGbHw7p-tIudI4dFYgLbk_MIneQ=w1280" alt="What is gender inequality?" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">What is gender inequality? Why does it exist?</h3>
+                    <p class="card-excerpt">Gender inequality happens when a gender has more privileges than the other, it is the stereotyping of what is feminine and what is masculine, that occurs normally with women. [...]</p>
+                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkfn5pndfRwC8c8Bv3JvUMPNRh4hs9ViTrTM5pUQZXAKrQZ3WhZKuwPQMU1-swAmm3py2z9RUMccpz1S0pG9oR8QyZj3N8Q1-AuJnADtW6ELO-2NMX4haFUih8fa_bKNgLU8MPHv_BM_mpDO4G_GXf2IFrTUcCz1JUFA4q-rxC6dGrnONF0VNuVnp9ZCEMjK83UG3MNIvKJ1wGFFhQjWV2cE3CAhrX-CpBNlXYc=w1280" alt="La juventud según nuestra mirada" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">La juventud según nuestra mirada</h3>
+                    <p class="card-excerpt">Una perspectiva única sobre la juventud desde nuestra visión particular.</p>
+                    <a href="la-juventud-según-nuestra-mirada.html" class="read-more">Lea más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkdZ5VpU_jnIS5I1scZSmxBik9KG3NrpfboAkCPinIcjI6TP3D14BTy0lSN-NM9P4vPUIU2fU6bCMh6evtSpDfiC11Roy094MnrQo8PpPfIJnN7kMBoWy70J0RVMLMZ-yTJ9RpexnAGds8Or7RyOgRzvbKXVYV72bZXttiAi-Uckr4QPWtCrfUBMfUqFERo_830RXviuR2o-U_TTjYBpBX70LGhZ8xbFdlkf=w1280" alt="Is Maus worth it or not?" class="card-image">
+                <div class="card-content">
+                    <h3 class="card-title">Is Maus worth it or not?</h3>
+                    <p class="card-excerpt">Have you ever experienced a traumatic event like the Holocaust? Well, Vladek has. In the book Maus, written by his son Art Spiegelman, we follow the story of Vladek during the Holocaust. [...]</p>
+                    <a href="culture-and-entertainment.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Articles Section -->
+    <section class="section">
+        <div class="highlights">
+            <div class="highlight-card">
+                <div class="card-content">
+                    <h3 class="card-title">Voices of resilience</h3>
+                    <p class="card-excerpt">Brazil's black youth face systematic challenges rooted in centuries of racial inequality. Despite comprising over half of the nation's population, they encounter disparities in education, employment, and social mobility, perpetuating cycles of poverty and marginalization. [...]</p>
+                    <a href="social-issues.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="card-content">
+                    <h3 class="card-title">Extreme use of testosterone: Is it safe or not?</h3>
+                    <p class="card-excerpt">Big muscles and perfect shape in a short time. The question is: are they really natural? Well, this trend is very popular among adults, but mostly among teenagers who seek stronger muscles by injecting testosterone. [...]</p>
+                    <a href="health.html" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="card-content">
+                    <h3 class="card-title">Novas oportunidades são criadas a partir de projetos direcionados à juventude</h3>
+                    <p class="card-excerpt">Nos últimos anos, têm sido criados vários projetos para crianças e adolescentes. Eles têm ajudado muito os jovens que participam deles, por meio de atividades novas, como cozinhar, pintar, limpar, além de aulas de robótica e informática. [...]</p>
+                    <a href="youth-and-sustainability.html" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jornal produzido por:</h3>
+                <p>Alice Reis, Bruno Silva, Bruno Zequi, Davi Guedes, Helena Calderaro, João Victor Pereira, Leonardo Dias, Livia Bertellotti, Lorena Chinchio, Luna Berger, Maria Clara Oliveira, Maria Eduarda Figueroa, Miguel Bavaresco, Pedro Calil, Rafaela Guarniero e Sophia da Silva.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Equipe pedagógica</h3>
+                <p><strong>Diretora Pedagógica</strong> - Ana Célia Mustafá</p>
+                <p><strong>Coordenadora Geral</strong> - Andressa Pescuma</p>
+                <p><strong>Coordenadora Pedagógica</strong> - Renata Leal</p>
+                <p><strong>Coordenadora Acadêmica</strong> - Litza Amorim</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Professores envolvidos no projeto</h3>
+                <p>Anderson Carlos (Natural Sciences), Artur Gonçalves (Classroom Assistant), Camila Ferraz (Language Arts), Fernando Ribeiro (Geography), Juliana Lima (History), Rodolfo Henrique Silva (Língua Portuguesa e Español) e Vanessa Ferreira (Arts).</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 BGB News - Jornal escolar da Builders</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Header hide/show on scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('.site-header');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // Scroll to content when clicking the scroll indicator
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            scrollIndicator.addEventListener('click', function() {
+                window.scrollTo({
+                    top: document.querySelector('.section').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Animate elements on scroll
+            const animateOnScroll = function() {
+                const cards = document.querySelectorAll('.highlight-card');
+                
+                cards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Add hover effect to cards
+            const cards = document.querySelectorAll('.highlight-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Initialize animations
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
