@@ -63,6 +63,7 @@
             display: flex;
             align-items: center;
             animation: fadeInLeft 1s ease;
+            z-index: 1001;
         }
         
         .logo img {
@@ -84,6 +85,10 @@
         }
         
         /* Navigation */
+        .main-nav {
+            transition: var(--transition);
+        }
+        
         .main-nav ul {
             display: flex;
             list-style: none;
@@ -103,6 +108,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: block;
         }
         
         .main-nav a::before {
@@ -132,6 +138,14 @@
             font-size: 24px;
             color: var(--primary-color);
             cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: rgba(0, 120, 136, 0.1);
+            border-radius: 4px;
         }
         
         /* Hero Section */
@@ -320,6 +334,7 @@
             transition: var(--transition);
             z-index: 999;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: none;
         }
         
         .back-to-top.visible {
@@ -356,20 +371,37 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-nav li {
+                margin-left: 15px;
+            }
+            
+            .main-nav a {
+                padding: 6px 10px;
+                font-size: 0.95rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
             }
             
             .logo {
-                margin-bottom: 15px;
+                margin-bottom: 0;
             }
             
             .main-nav {
                 width: 100%;
-                margin-top: 15px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 display: none;
+                padding: 20px 0;
             }
             
             .main-nav.active {
@@ -382,14 +414,21 @@
             }
             
             .main-nav li {
-                margin: 8px 0;
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .main-nav a {
+                padding: 12px 20px;
+                display: block;
+                width: 100%;
+                font-size: 1rem;
             }
             
             .mobile-menu-btn {
                 display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
+                position: static;
             }
             
             .page-hero-title {
@@ -417,6 +456,19 @@
             .section {
                 padding: 60px 15px;
             }
+            
+            .header-container {
+                padding: 12px 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+                margin-right: 10px;
+            }
+            
+            .site-title {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -430,10 +482,10 @@
                 </a>
                 <div class="site-title">BGB News</div>
             </div>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Main navigation">
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="youth-sustainability.html" class="active">Youth and Sustainability</a></li>
@@ -518,9 +570,9 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top">
+    <button class="back-to-top" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
-    </div>
+    </button>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -532,6 +584,28 @@
                 mainNav.classList.toggle('active');
                 mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', mainNav.classList.contains('active'));
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.header-container') && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            // Close mobile menu when a link is clicked
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
             });
             
             // Header hide/show on scroll
@@ -571,9 +645,9 @@
             
             // Add active class to nav links based on current page
             const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.main-nav a');
+            const navLinksAll = document.querySelectorAll('.main-nav a');
             
-            navLinks.forEach(link => {
+            navLinksAll.forEach(link => {
                 if (link.getAttribute('href') === currentPage) {
                     link.classList.add('active');
                 }
