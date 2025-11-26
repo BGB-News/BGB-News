@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La juventud según nuestra mirada - BGB News</title>
+    <title>Health - BGB News</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Merriweather:wght@400;700&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -136,7 +136,7 @@
         
         /* Hero Section */
         .page-hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -200,68 +200,60 @@
             border-radius: 2px;
         }
         
-        /* Gallery Styles */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        /* Article Styles */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
-        .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
         }
         
-        .gallery-item:nth-child(2) {
-            animation-delay: 0.2s;
+        .article-content h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
         }
         
-        .gallery-item:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .gallery-image {
+        .article-image {
             width: 100%;
-            height: 300px;
+            height: 400px;
             object-fit: cover;
-            transition: var(--transition);
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
         }
         
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.05);
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
         }
         
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-        
-        .student-name {
+        .warning-title {
             font-weight: 700;
-            margin-bottom: 5px;
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-info {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .author-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
         
         /* Footer */
@@ -439,10 +431,6 @@
             .section {
                 padding: 60px 15px;
             }
-            
-            .gallery {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -463,8 +451,8 @@
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="youth-sustainability.html">Youth and Sustainability</a></li>
-                    <li><a href="juventud-mirada.html" class="active">La juventud según nuestra mirada</a></li>
-                    <li><a href="health.html">Health</a></li>
+                    <li><a href="juventud-mirada.html">La juventud según nuestra mirada</a></li>
+                    <li><a href="health.html" class="active">Health</a></li>
                     <li><a href="social-issues.html">Social Issues</a></li>
                     <li><a href="culture-entertainment.html">Culture and Entertainment</a></li>
                     <li><a href="editoriais.html">Editoriais</a></li>
@@ -477,23 +465,154 @@
     <!-- Hero Section -->
     <section class="page-hero">
         <div class="page-hero-content">
-            <h1 class="page-hero-title">La juventud según nuestra mirada</h1>
-            <p class="page-hero-subtitle">Perspectivas juveniles sobre el mundo actual</p>
+            <h1 class="page-hero-title">Health</h1>
+            <p class="page-hero-subtitle">Understanding wellness in the modern world</p>
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Article Section -->
     <section class="section">
-        <h2 class="section-title">Nuestras Perspectivas</h2>
+        <h2 class="section-title">Extreme use of testosterone: Is it safe or not?</h2>
         
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkftCdxTCAN_yJnG1APIkWeKjom61XYV_zJDAV3Q3yVbkjrUXNXFD7lVj9L3ANHCDnhNbhiSUCXSzr-0EjqrwIMOrYvE2ftCS_3MCHoC9ypMDVyvHj3l4tIKN7Nl55cXbFwXlLWi58kTyM6mw44i-QnnDNpQ1IC3-Ahh-XhU7Finh55BQ2xAbxNvjNMULoIwuo7_8tgkXCDt_rqUVsKXDeVI7vVgXJUpg0y2nvM=w1280" alt="Perspectiva juvenil" class="gallery-image">
-                <div class="gallery-caption">
-                    <div class="student-name">Lorena Chinchio</div>
-                    <p>Mi visión sobre los desafíos y oportunidades de la juventud actual</p>
-                </div>
+        <div class="article-content">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Health and fitness" class="article-image">
+            
+            <p>Big muscles and perfect shape in a short time. The question is: are they really natural? Well, this trend is very popular among adults, but mostly among teenagers who seek stronger muscles by injecting testosterone.</p>
+            
+            <h3>What is Testosterone?</h3>
+            
+            <p>Testosterone is a hormone produced primarily in the testicles in men and ovaries in women, though in much smaller amounts. It plays a key role in the development of male reproductive tissues and promotes secondary sexual characteristics such as increased muscle and bone mass.</p>
+            
+            <p>While testosterone is essential for normal development and health, using synthetic testosterone to enhance physical appearance or athletic performance carries significant risks.</p>
+            
+            <h3>The Dangers of Testosterone Abuse</h3>
+            
+            <p>When used improperly, testosterone can cause serious health problems:</p>
+            
+            <ul>
+                <li>Cardiovascular issues including heart attacks and strokes</li>
+                <li>Liver damage and tumors</li>
+                <li>Increased risk of blood clots</li>
+                <li>Mood swings, aggression, and other psychological effects</li>
+                <li>Infertility and testicular shrinkage</li>
+                <li>Acne and male-pattern baldness</li>
+            </ul>
+            
+            <div class="warning-box">
+                <div class="warning-title">Health Warning</div>
+                <p>Using testosterone or other anabolic steroids without medical supervision is dangerous and illegal in many circumstances. The pursuit of rapid muscle growth can lead to lifelong health consequences.</p>
             </div>
             
-            <div class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/sitesv/AAzXCke0yAqGsj62OmaVbMf0Q03wyGnficOYMvmURuPT9WvgeKgEsZ48XnYRbQMRcTRbWKB7g
+            <h3>Healthy Alternatives</h3>
+            
+            <p>Instead of turning to dangerous shortcuts, consider these healthy approaches to fitness:</p>
+            
+            <ul>
+                <li>Proper nutrition with adequate protein</li>
+                <li>Consistent, well-planned exercise routines</li>
+                <li>Sufficient rest and recovery</li>
+                <li>Patience - natural muscle growth takes time</li>
+                <li>Consultation with fitness professionals</li>
+            </ul>
+            
+            <p>Remember that true health isn't just about appearance - it's about overall wellbeing, including mental health, cardiovascular fitness, and sustainable habits.</p>
+            
+            <div class="author-info">
+                <p class="author-name">By: Student Writers of BGB News</p>
+                <p>This article is part of our health awareness series focusing on issues relevant to young people.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jornal produzido por:</h3>
+                <p>Alice Reis, Bruno Silva, Bruno Zequi, Davi Guedes, Helena Calderaro, João Victor Pereira, Leonardo Dias, Livia Bertellotti, Lorena Chinchio, Luna Berger, Maria Clara Oliveira, Maria Eduarda Figueroa, Miguel Bavaresco, Pedro Calil, Rafaela Guarniero e Sophia da Silva.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Equipe pedagógica</h3>
+                <p><strong>Diretora Pedagógica</strong> - Ana Célia Mustafá</p>
+                <p><strong>Coordenadora Geral</strong> - Andressa Pescuma</p>
+                <p><strong>Coordenadora Pedagógica</strong> - Renata Leal</p>
+                <p><strong>Coordenadora Acadêmica</strong> - Litza Amorim</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Professores envolvidos no projeto</h3>
+                <p>Anderson Carlos (Natural Sciences), Artur Gonçalves (Classroom Assistant), Camila Ferraz (Language Arts), Fernando Ribeiro (Geography), Juliana Lima (History), Rodolfo Henrique Silva (Língua Portuguesa e Español) e Vanessa Ferreira (Arts).</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 BGB News - Jornal escolar da Builders</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Header hide/show on scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('.site-header');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+                
+                // Back to top button
+                const backToTop = document.querySelector('.back-to-top');
+                if (scrollTop > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Back to top functionality
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add active class to nav links based on current page
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
